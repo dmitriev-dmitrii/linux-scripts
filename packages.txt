@@ -1,7 +1,6 @@
 git
 wget
 curl
-telegram-desktop
 gnome-shell-extensions
 chrome-gnome-shell
 nautilus-admin

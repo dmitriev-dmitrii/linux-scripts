@@ -4,7 +4,9 @@ install-apps:
 
 install-snap-apps:
 	sudo snap install postman
-
+	sudo snap install telegram-desktop
+	sudo snap install webstorm
+	
 # node js (nvm)
 install-nvm:
 	wget -qO- https://raw.githubusercontent.com/nvm-sh/nvm/v0.38.0/install.sh | bash	
