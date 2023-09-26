@@ -1,35 +1,34 @@
-## apt
-#install-apps:
-#	xargs -a packages.txt sudo apt-get install -y
-#
-#install-snap-apps:
-#	sudo snap install postman
-#	sudo snap install telegram-desktop
-#	sudo snap install webstorm
+DOWNLOADS_PATH=downloads
+
+create-folder:remove-folder
+	mkdir ${DOWNLOADS_PATH} -p
+
+remove-folder:
+	rm ${DOWNLOADS_PATH} -f -r
+
+install-node-js:
+	include node-js/Makefile
+
+#app from file app.txt
+install-app:
+	sudo pacman -Syu --no-confirm
+	xargs -a app.txt sudo pacman -S --no-confirm
+
+#install-docker :
+#	git clone https://github.com/moby/moby ${DOWNLOADS_PATH}/docker-git
+#	sudo pamac build ${DOWNLOADS_PATH}/docker-git -S --noconfirm
+#	sudo groupadd docker --force
+#	sudo usermod -aG docker $(USER)
+#	sudo systemctl enable docker.service
+
+#install-docker-desktop:
+	#xargs -a docker-desktop-url.txt curl --output  ./${DOWNLOADS_PATH}/docker-desktop.pkg.tar.zst
+	#sudo pacman -U --noconfirm ./${DOWNLOADS_PATH}/docker-desktop.pkg.tar.zst
+    #sudo systemctl --user start docker-desktop
+
+#install: create-folder install-app install-nvm install-npm remove-folder
 
 
-# node js (nvm)
-install-nvm:
-	wget -qO- https://raw.githubusercontent.com/nvm-sh/nvm/v0.38.0/install.sh | bash
-	. ${HOME}/.nvm/nvm.sh && nvm install --lts
 
-# node js npm
-install-npm:
-	npm i yarn -g
-	npm i pnpm -g
-	npm i  @vue/cli -g
-	npm i  @nestjs/cli -g
-	npm i express-generator -g
-	npm i  bun -g
 
-#install:
-#	sudo apt autoremove -y
-#	sudo apt upgrade -y
-#	sudo apt update -y
-#	install-apps
-#	install-snap-apps
-#	install-nvm
-#	sudo apt upgrade -y
-#	sudo apt autoremove -y
 
-	

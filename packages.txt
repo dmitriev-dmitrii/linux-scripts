@@ -1,7 +1,0 @@
-git
-wget
-curl
-gnome-shell-extensions
-chrome-gnome-shell
-nautilus-admin
-chromium-browser
