@@ -21,10 +21,9 @@ install-app:
 #	sudo usermod -aG docker $(USER)
 #	sudo systemctl enable docker.service
 
-#install-docker-desktop:
+install-docker-desktop:
 	#xargs -a docker-desktop-url.txt curl --output  ./${DOWNLOADS_PATH}/docker-desktop.pkg.tar.zst
-	#sudo pacman -U --noconfirm ./${DOWNLOADS_PATH}/docker-desktop.pkg.tar.zst
-    #sudo systemctl --user start docker-desktop
+	sudo pacman -U --noconfirm ./${DOWNLOADS_PATH}/docker-desktop.pkg.tar.zst
 
 #install: create-folder install-app install-nvm install-npm remove-folder
 
