@@ -10,7 +10,8 @@ install-npm:
 	npm i -g pnpm 
 	npm i -g @vue/cli 
 	npm i -g @nestjs/cli 
-	npm i -g express-generator 
+	npm i -g express-generator
+	npm i -g pnpm
 	npm i -g bun 
 	npm i -g ts
 	npm i -g ts-node
@@ -18,6 +19,3 @@ install-npm:
 install: install-nvm install-npm
 	
 	
-	
-	
-
