@@ -1,3 +1,4 @@
+all: install-nvm install-npm
 
 # node js (nvm)
 install-nvm:
@@ -6,16 +7,16 @@ install-nvm:
 
 # npm global
 install-npm:
-	npm i -g yarn 
-	npm i -g pnpm 
-	npm i -g @vue/cli 
-	npm i -g @nestjs/cli 
-	npm i -g express-generator
-	npm i -g pnpm
-	npm i -g bun 
-	npm i -g ts
-	npm i -g ts-node
+	npm i yarn -g
+	npm i pnpm -g
+	npm i @vue/cli -g
+	npm i @nestjs/cli -g
+	npm i express-generator -g
+	npm i pnpm -g
+	npm i bun -g
+	npm i ts -g
+	npm i ts-node -g
 
-install: install-nvm install-npm
+
 	
 	
