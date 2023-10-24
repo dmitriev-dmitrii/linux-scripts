@@ -1,0 +1,17 @@
+DOWNLOADS_PATH=https://desktop.docker.com/linux/main/amd64/docker-desktop-4.24.2-amd64.deb
+
+clean docker-desktop:
+  sudo apt remove docker-desktop -y
+  rm -r $HOME/.docker/desktop
+  sudo rm /usr/local/bin/com.docker.cli -f 
+  sudo apt purge docker-desktop -y
+
+
+# install-docker-desktop:
+sudo apt-get update
+sudo apt-get install ./docker-desktop-<version>-<arch>.deb
+
+
+# install-docker-desktop:
+# 	#xargs -a docker-desktop-url.txt curl --output  ./${DOWNLOADS_PATH}/docker-desktop.pkg.tar.zst
+# 	sudo pacman -U --noconfirm ./${DOWNLOADS_PATH}/docker-desktop.pkg.tar.zst
