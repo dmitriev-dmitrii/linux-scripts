@@ -2,6 +2,6 @@ git
 wget
 curl
 gnome-shell-extensions
-telegram-desktop
-
+nautilus-admin
+snapd
 

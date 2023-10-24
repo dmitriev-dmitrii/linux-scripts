@@ -1,3 +1,0 @@
-https://desktop.docker.com/linux/main/amd64/docker-desktop-4.23.0-x86_64.pkg.tar.zst?utm_source=docker&utm_medium=webreferral&utm_campaign=docs-driven-download-linux-amd64&_gl=1*5135d*_ga*Mzk4ODU2ODkuMTY5NTY1OTg0Ng..*_ga_XJWPQMJYHQ*MTY5NTY1OTg0Ni4xLjEuMTY5NTY2MjQ0MC42MC4wLjA.
-
-
