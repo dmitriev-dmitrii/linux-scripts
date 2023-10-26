@@ -1,3 +1,4 @@
 https://github.com/shiftkey/desktop/releases/download/release-3.1.1-linux1/GitHubDesktop-linux-3.1.1-linux1.deb
 https://downloads.mongodb.com/compass/mongodb-compass_1.40.4_amd64.deb
 https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+https://downloads.mongodb.com/compass/mongodb-compass_1.40.4_amd64.deb

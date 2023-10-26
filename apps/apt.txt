@@ -4,4 +4,4 @@ curl
 gnome-shell-extensions
 nautilus-admin
 snapd
-
+chromium-browser
