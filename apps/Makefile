@@ -20,5 +20,5 @@ install-snap-programs:
 	
 install-deb-programs:
 	wget -i deb.txt -P ${DOWNLOADS_FOLDER_PATH} 
-	sudo apt install ${DOWNLOADS_FOLDER_PATH}/*.deb -y
+	sudo dpkg -i ${DOWNLOADS_FOLDER_PATH}/*.deb
 
