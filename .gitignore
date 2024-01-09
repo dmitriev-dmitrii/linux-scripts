@@ -1,3 +1,4 @@
 .idea
 /downloads
 .DS_Store
+*.deb
