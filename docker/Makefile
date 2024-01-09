@@ -23,7 +23,7 @@ install-preparation:
 
 install-docker-desktop:	
 	sudo apt -y install apt-transport-https ca-certificates software-properties-common
-	wget https://desktop.docker.com/linux/main/amd64/docker-desktop-4.22.1-amd64.deb -P ./
+	wget https://desktop.docker.com/linux/main/amd64/docker-desktop-4.26.1-amd64.deb -P ./
 	sudo apt install ./*.deb -y
 	sudo rm -r -f  ./*.deb
 	
