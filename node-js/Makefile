@@ -1,9 +1,11 @@
-all: install-nvm install-npm
+all: install-nvm install-node install-npm
 
 # node js (nvm)
 install-nvm:
 	sudo curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/master/install.sh | bash
-	. ~/.nvm/nvm.sh && nvm install --lts && nvm use --lts
+	. ~/.nvm/nvm.sh
 # npm global
+install-node:
+	nvm install --lts
 install-npm:
-	npm i bun ts-node ts pnpm yarn -g --force
+	npm i ts-node ts pnpm yarn bun -g --force
