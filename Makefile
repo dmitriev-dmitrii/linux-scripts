@@ -2,7 +2,7 @@ DOWNLOADS_FOLDER_PATH = $(shell pwd)/downloads
 
 export DOWNLOADS_FOLDER_PATH
 
-all:create-folder install-git install-apps install-node-js remove-folder
+all:create-folder install-git install-apps install-node-js remove-folder ubuntu-configs
 
 create-folder:
 	mkdir ${DOWNLOADS_FOLDER_PATH} -p
@@ -12,6 +12,9 @@ install-git:
 
 remove-folder:
 	sudo rm ${DOWNLOADS_FOLDER_PATH} -f -r
+
+ubuntu-configs:ubuntu-configs
+	cd ./ubuntu-configs && make
 
 install-apps:create-folder
 	cd ./apps && make
