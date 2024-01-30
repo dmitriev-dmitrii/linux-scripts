@@ -34,6 +34,7 @@ install-jetbrains:
 	sudo tar -xzf jetbrains-toolbox*.tar.gz
 	sudo rm jetbrains-toolbox*.tar.gz
 	sudo mv ./jetbrains-toolbox*/jetbrains-toolbox   /opt/jetbrains/jetbrains-toolbox
+	sudo rm -r -f jetbrains-toolbox*
 	sudo apt-get install -y libfuse2
 	/opt/jetbrains/jetbrains-toolbox
 
