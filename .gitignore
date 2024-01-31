@@ -1,4 +1,5 @@
 .idea
+.tar.gz
 /downloads
 .DS_Store
 *.deb

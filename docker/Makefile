@@ -1,33 +1,38 @@
 
-all: install-preparation install-docker-desktop install-docker-permission
+all: install-preparation  install-docker  install-permissions install-docker-desktop
 	
 install-preparation:
-	sudo apt update -y
-	sudo apt upgrade -y
+	sudo rm -rf /var/lib/docker
+	sudo rm -rf /var/lib/containerd
+	sudo apt-get purge -y docker-ce containerd.io docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin docker-ce-rootless-extras
+	--ignore-errors sudo apt remove -f -y --purge docker-desktop
 	--ignore-errors sudo apt remove -f -y --purge docker docker-engine docker.io 2>/dev/null
-	--ignore-errors sudo apt remove -f -y --purge docker-desktop 
+	--ignore-errors sudo apt update -y
+	--ignore-errors sudo apt upgrade -y
 	--ignore-errors sudo rm -f -r $HOME/.docker/desktop 
 	--ignore-errors sudo rm -f -r /usr/local/bin/com.docker.cli
 	sudo apt full-upgrade -y
 	sudo apt autoremove -y
 	sudo apt autoclean -y
 
-#install-docker:
-#	sudo apt update
-#	sudo apt install apt-transport-https ca-certificates curl software-properties-common
-#	sudo curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
-#	sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu focal stable" -y
-#	sudo apt-cache policy docker-ce
-#	sudo apt install docker-ce -y
-#	sudo apt install docker-compose -y
+install-docker:
+	sudo rm -r -f  get-docker.sh
+	curl -fsSL https://get.docker.com -o get-docker.sh
+	sudo sh ./get-docker.sh --dry-run
+	sudo rm -r -f  get-docker.sh
+	sudo rm -rf /var/lib/containerd
+	sudo apt-get -y install containerd.io docker-ce docker-ce-cli docker-buildx-plugin docker-compose-plugin
 
-install-docker-desktop:	
-	sudo apt -y install apt-transport-https ca-certificates software-properties-common
+install-docker-desktop:
 	wget https://desktop.docker.com/linux/main/amd64/docker-desktop-4.26.1-amd64.deb -P ./
-	sudo apt install ./*.deb -y
+	sudo apt reinstall ./*.deb -y
 	sudo rm -r -f  ./*.deb
-	
-install-docker-permission:
+
+install-permissions:
+	systemctl start docker
 	sudo groupadd docker --force
+	sudo usermod -aG kvm $(USER)
 	sudo usermod -aG docker $(USER)
-	
+	sudo service docker restart
+	docker --version
+	docker compose version
