@@ -9,3 +9,5 @@ install-node:
 	nvm install --lts
 install-npm:
 	npm i ts-node ts pnpm yarn bun -g --force
+config:
+	yarn config set network-timeout 600000 -g
