@@ -17,6 +17,8 @@ install-snap-programs:
 	sudo snap install discord
 	sudo snap install postman
 	sudo snap install code --classic
+	sudo snap install webstorm --classic
+	sudo snap install phpstorm --classic
 	
 install-deb-programs:
 	wget -i deb.txt -P ./
@@ -27,16 +29,6 @@ chrome-auto-update:
 	wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
 	sudo sh -c 'echo "deb http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google-chrome.list'
 
-install-jetbrains:
-	sudo rm /opt/jetbrains -rf
-	sudo mkdir -p /opt/jetbrains
-	wget -i jetbrains.txt -P ./
-	sudo tar -xzf jetbrains-toolbox*.tar.gz
-	sudo rm jetbrains-toolbox*.tar.gz
-	sudo mv ./jetbrains-toolbox*/jetbrains-toolbox   /opt/jetbrains/jetbrains-toolbox
-	sudo rm -r -f jetbrains-toolbox*
-	sudo apt-get install -y libfuse2
-	/opt/jetbrains/jetbrains-toolbox
 
 
 
