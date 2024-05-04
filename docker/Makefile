@@ -1,5 +1,5 @@
 
-all: install-preparation  install-docker  install-permissions install-docker-desktop
+all: install-preparation  install-docker  install-permissions 
 	
 install-preparation:
 	--ignore-errors	sudo rm -rf /var/lib/docker
@@ -28,12 +28,17 @@ install-docker:
 	docker compose version
 
 install-docker-desktop:
+	--ignore-errors sudo apt remove -f -y --purge docker-desktop
+	--ignore-errors sudo rm -f -r $HOME/.docker/desktop 
 	wget https://desktop.docker.com/linux/main/amd64/145265/docker-desktop-4.29.0-amd64.deb -P ./
 	sudo apt reinstall ./*.deb -y
 	sudo rm -r -f  ./*.deb
 
 install-permissions:
-	sudo systemctl start docker
+	echo "install-permissions $(USER)"
 	sudo groupadd docker --force
 	sudo usermod -aG docker $(USER)
+	newgrp docker
+	sudo systemctl start docker
 	sudo service docker restart
+	

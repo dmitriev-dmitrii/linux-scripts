@@ -25,4 +25,8 @@ install-node-js:
 install-docker:
 	cd ./docker && make
 
+install-docker-desktop:
+	cd ./docker && install-docker-desktop
+	
+
 
