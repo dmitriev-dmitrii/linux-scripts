@@ -1,6 +1,5 @@
 
-#all: update-apt install-apt-programs install-snap-programs install-deb-programs chrome-auto-update jetbrains.txt update-apt
-all:install-jetbrains
+all: update-apt install-apt-programs install-snap-programs install-deb-programs chrome-auto-update update-apt
 
 update-apt:
 	sudo apt update -y
@@ -28,6 +27,7 @@ install-deb-programs:
 chrome-auto-update:
 	wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
 	sudo sh -c 'echo "deb http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google-chrome.list'
+	google-chrome
 
 
 
