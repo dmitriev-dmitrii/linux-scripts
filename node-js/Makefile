@@ -1,4 +1,4 @@
-all:install-nvm  install-yarn config
+all: install-nvm install-yarn config
 
 # node js (nvm)
 install-nvm:
