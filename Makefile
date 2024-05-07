@@ -1,26 +1,16 @@
-DOWNLOADS_FOLDER_PATH = $(shell pwd)/downloads
+#DOWNLOADS_FOLDER_PATH = $(shell pwd)/downloads
 
-export DOWNLOADS_FOLDER_PATH
+all: update-apt install-apps update-apt
 
-all:create-folder install-git install-apps install-node-js remove-folder ubuntu-configs
+update-apt:
+	sudo apt update -y
+	apt upgrade -y
+	apt full-upgrade -y
+	apt autoremove -y
+	apt autoclean -y
 
-create-folder:
-	mkdir ${DOWNLOADS_FOLDER_PATH} -p
-
-install-git:
-	cd ./git && make
-
-remove-folder:
-	sudo rm ${DOWNLOADS_FOLDER_PATH} -f -r
-
-ubuntu-configs:ubuntu-configs
-	cd ./ubuntu-configs && make
-
-install-apps:create-folder
+install-apps:
 	cd ./apps && make
-
-install-node-js:
-	cd ./node-js && make
 
 install-docker:
 	cd ./docker && make
