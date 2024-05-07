@@ -2,5 +2,5 @@ https://github.com/shiftkey/desktop/releases/download/release-3.1.1-linux1/GitHu
 https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
 https://downloads.mongodb.com/compass/mongodb-compass_1.40.4_amd64.deb
 https://github.com/nelebadnjak/telegram-desktop-deb-package/releases/download/4.8.3/telegram_desktop_4.8.3_amd64.deb
-https://discordapp.com/api/download?platform=linux
+https://dl.discordapp.net/apps/linux/0.0.53/discord-0.0.53.deb
 

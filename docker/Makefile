@@ -39,12 +39,7 @@ install-docker-desktop: remove-docker-desktop
 	sudo rm -r -f  ./*.deb
 
 install-permissions:
-	newgrp docker
 	sudo groupadd docker --force
 	sudo usermod -aG docker $(USER)
-	sudo chown $(USER):$(USER) /home/$(USER)/.docker -R
-	sudo chmod g+rwx $(HOME)/.docker -R
 	sudo systemctl start docker
 	sudo service docker restart
-	sudo reboot
-

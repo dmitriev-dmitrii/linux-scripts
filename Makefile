@@ -1,6 +1,4 @@
-#DOWNLOADS_FOLDER_PATH = $(shell pwd)/downloads
-
-all: update-apt install-apps update-apt
+all: update-apt dev-tools install-apps install-docker update-apt
 
 update-apt:
 	sudo apt update -y
@@ -9,14 +7,19 @@ update-apt:
 	apt autoremove -y
 	apt autoclean -y
 
+install-dev-tools:
+	cd ./dev-tools && make
+
 install-apps:
 	cd ./apps && make
 
 install-docker:
 	cd ./docker && make
+	sudo reboot
 
-install-docker-desktop:
-	cd ./docker && install-docker-desktop
+# install-docker-desktop:
+# 	#gavno 
+# 	cd ./docker && install-docker-desktop 
 	
 
 

@@ -1,17 +1,17 @@
 
-all: install-deb-programs
+all: install-deb-programs install-script-apps
 
 download-deb-apps:
 	wget -i deb.txt -P ./
 
 install-deb-programs: download-deb-apps
-	sudo apt install -y ./*.deb
+	sudo dpkg -i ./*.deb
 	rm ./*.deb
 
-install-scripts-apt:
+install-scripts-dependencies:
 	sudo apt install dirmngr ca-certificates software-properties-common apt-transport-https curl lsb-release -y
 
-install-scripts:install-scripts-apt webstorm phpstorm vs-code
+install-script-apps:install-scripts-dependencies webstorm phpstorm vs-code
 	sudo apt update
 	sudo apt install webstorm
 	sudo apt install phpstorm
