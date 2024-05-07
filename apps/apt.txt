@@ -1,8 +1,0 @@
-git
-wget
-curl
-gnome-shell-extensions
-nautilus-admin
-snapd
-libfuse2
-chromium-browser

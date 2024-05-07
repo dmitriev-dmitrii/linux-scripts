@@ -1,35 +1,30 @@
 
-all: update-apt install-apt-programs install-snap-programs install-deb-programs chrome-auto-update update-apt
+all: install-deb-programs install-script-apps
 
-update-apt:
-	sudo apt update -y
-	sudo apt upgrade -y
-	sudo apt full-upgrade -y
-	sudo apt autoremove -y
-	sudo apt autoclean -y
-
-install-apt-programs:
-	xargs -a apt.txt sudo apt install -y 
-
-install-snap-programs:
-	sudo snap install telegram-desktop
-	sudo snap install discord
-	sudo snap install postman
-	sudo snap install code --classic
-	sudo snap install webstorm --classic
-	sudo snap install phpstorm --classic
-	
-install-deb-programs:
+download-deb-apps:
 	wget -i deb.txt -P ./
+
+install-deb-programs: download-deb-apps
 	sudo dpkg -i ./*.deb
-	sudo rm ./*.deb
-	
-chrome-auto-update:
-	wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
-	sudo sh -c 'echo "deb http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google-chrome.list'
-	google-chrome
+	rm ./*.deb
 
+install-scripts-dependencies:
+	sudo apt install dirmngr ca-certificates software-properties-common apt-transport-https curl lsb-release -y
 
+install-script-apps:install-scripts-dependencies webstorm phpstorm vs-code
+	sudo apt update
+	sudo apt install webstorm
+	sudo apt install phpstorm
+	sudo apt install code
 
+webstorm:
+	curl -s https://s3.eu-central-1.amazonaws.com/jetbrains-ppa/0xA6E8698A.pub.asc | sudo apt-key add -
+	echo "deb https://jetbrains-ppa.s3-website.eu-central-1.amazonaws.com bionic main" | sudo tee /etc/apt/sources.list.d/jetbrains-ppa.list > /dev/null
 
+phpstorm:
+	curl -s https://s3.eu-central-1.amazonaws.com/jetbrains-ppa/0xA6E8698A.pub.asc | gpg --dearmor | sudo tee /usr/share/keyrings/jetbrains-ppa-archive-keyring.gpg > /dev/null
+	echo "deb [signed-by=/usr/share/keyrings/jetbrains-ppa-archive-keyring.gpg] http://jetbrains-ppa.s3-website.eu-central-1.amazonaws.com any main" | sudo tee /etc/apt/sources.list.d/jetbrains-ppa.list > /dev/null
 
+vs-code:
+	curl -fSsL https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor | sudo tee /usr/share/keyrings/vscode.gpg >/dev/null
+	echo deb [arch=amd64 signed-by=/usr/share/keyrings/vscode.gpg] https://packages.microsoft.com/repos/vscode stable main | sudo tee /etc/apt/sources.list.d/vscode.list
