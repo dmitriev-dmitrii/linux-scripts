@@ -20,8 +20,7 @@ install-docker:
 	sudo sh ./get-docker.sh
 	sudo rm -rf /var/lib/containerd
 	sudo apt update -y
-	sudo apt-get -y reinstall containerd.io docker-ce docker-ce-cli docker-buildx-plugin docker-compose-plugin
-	sudo rm -r -f  get-docker.sh
+	sudo apt-get -y reinstall containerd.io docker-ce docker-ce-cli docker-buildx-plugin docker-compose-plugin docker-compose
 	docker --version
 	docker compose version
 
