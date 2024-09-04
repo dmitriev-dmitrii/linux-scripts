@@ -4,14 +4,13 @@ update-apt:
 	sudo apt update -y
 	apt upgrade -y
 	apt full-upgrade -y
-
 clean-apt:
 	apt autoremove -y
 	apt autoclean -y
 
 install-tools:
-    update-apt
-    cd ./tools && make
+	update-apt
+	cd ./tools && make
 	clean-apt
 
 install-apps:
