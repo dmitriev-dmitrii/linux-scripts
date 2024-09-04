@@ -12,6 +12,7 @@ remove-docker: remove-docker-desktop
 	--ignore-errors sudo apt full-upgrade -y
 	--ignore-errors sudo apt autoremove -y
 	--ignore-errors	sudo apt autoclean -y
+	--ignore-errors	sudo rm -r -f ~/.docker
 
 install-docker:
 	sudo rm -r -f  /etc/apt/sources.list.d/docker-ce.list
@@ -25,10 +26,16 @@ install-docker:
 	docker compose version
 
 remove-docker-desktop:
-	--ignore-errors	sudo apt remove docker-desktop
+	--ignore-errors docker context rm desktop-linux -f
+	--ignore-errors	sudo apt remove docker-desktop -y
 	--ignore-errors	rm -r $HOME/.docker/desktop
 	--ignore-errors sudo rm /usr/local/bin/com.docker.cli
 	--ignore-errors	sudo apt purge docker-desktop
+	--ignore-errors	sudo apt autoclean -y
+	--ignore-errors sudo apt autoremove -y
+	--ignore-errors	sudo rm -r -f ~/.docker
+
+
 
 install-docker-desktop: remove-docker-desktop
 	--ignore-errors sudo apt remove -f -y --purge docker-desktop
