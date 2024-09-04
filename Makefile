@@ -1,14 +1,18 @@
-all: update-apt dev-tools install-apps install-docker update-apt
+all: update-apt install-tools install-apps install-docker clean-apt
 
 update-apt:
 	sudo apt update -y
 	apt upgrade -y
 	apt full-upgrade -y
+
+clean-apt:
 	apt autoremove -y
 	apt autoclean -y
 
-install-dev-tools:
-	cd ./dev-tools && make
+install-tools:
+    update-apt
+    cd ./tools && make
+	clean-apt
 
 install-apps:
 	cd ./apps && make
