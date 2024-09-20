@@ -10,9 +10,9 @@ clean-apt:
 
 install-tools:
 	update-apt
-	cd ./tools && make
 	clean-apt
-
+	cd ./tools && make
+	
 install-apps:
 	cd ./apps && make
 

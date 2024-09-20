@@ -1,5 +1,5 @@
 
-all: remove-docker install-docker install-permissions
+all: remove-docker install-docker install-permissions install-docker-mirrors
 
 remove-docker: remove-docker-desktop
 	 xargs -a apt.txt sudo apt-get remove -f -y --purge
@@ -49,3 +49,6 @@ install-permissions:
 	sudo usermod -aG docker $(USER)
 	sudo systemctl start docker
 	sudo service docker restart
+	
+install-docker-mirrors:
+	 sudo cp ./daemon.json /etc/docker/daemon.json
