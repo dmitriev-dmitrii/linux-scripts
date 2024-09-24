@@ -1,5 +1,5 @@
 
-all: remove-docker install-docker install-permissions install-docker-mirrors
+all: remove-docker install-docker install-permissions install-docker-mirrors docker-compose-v2-alias
 
 remove-docker: remove-docker-desktop
 	 xargs -a apt.txt sudo apt-get remove -f -y --purge
@@ -52,3 +52,8 @@ install-permissions:
 	
 install-docker-mirrors:
 	 sudo cp ./daemon.json /etc/docker/daemon.json
+
+docker-compose-v2-alias:
+	sudo touch /usr/bin/docker-compose
+	echo 'docker compose --compatibility "$@"' | sudo tee /usr/bin/docker-compose
+	sudo chmod +x /usr/bin/docker-compose
